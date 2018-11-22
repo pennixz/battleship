@@ -1,57 +1,71 @@
 function checkLast() {
-    //IF .x 0 && .y - 1
-    if (typeof player.pieces[lastPiece.x][lastPiece.y - 1] != 'undefined') {
+    let roll = Math.round(Math.random() * 7);
+    if (roll == 0) {
         if (player.pieces[lastPiece.x][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x][lastPiece.y - 1][0] != 3) {
             opponentGuess(lastPiece.x, lastPiece.y - 1);
+        } else {
+            checkLast();
         }
-    } //IF .x 0 && .y + 1        
-    else if (typeof player.pieces[lastPiece.x][lastPiece.y + 1] != 'undefined') {
+    }
+    if (roll == 1) {
         if (player.pieces[lastPiece.x][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x][lastPiece.y + 1][0] != 3) {
             opponentGuess(lastPiece.x, lastPiece.y + 1);
+        } else {
+            checkLast();
         }
     }
-    //IF .x - 1
-    else if (typeof player.pieces[lastPiece.x - 1] != 'undefined') {
-
+    if (roll == 2) {
         if (player.pieces[lastPiece.x - 1][lastPiece.y][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y][0] != 3) {
             opponentGuess(lastPiece.x - 1, lastPiece.y);
-            //IF .y - 1
-        } else if (typeof player.pieces[lastPiece.x - 1][lastPiece.y - 1] != 'undefined') {
-            if (player.pieces[lastPiece.x - 1][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y - 1][0] != 3) {
-                opponentGuess(lastPiece.x - 1, lastPiece.y - 1);
-            }
-        } //IF .y + 1
-        else if (typeof player.pieces[lastPiece.x - 1][lastPiece.y + 1] != 'undefined') {
-            if (player.pieces[lastPiece.x - 1][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y + 1][0] != 3) {
-                opponentGuess(lastPiece.x - 1, lastPiece.y + 1);
-            }
+        } else {
+            checkLast();
         }
     }
-    //IF .x + 1
-    else if (typeof player.pieces[lastPiece.x + 1] != 'undefined') {
+    if (roll == 3) {
+        if (player.pieces[lastPiece.x - 1][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y - 1][0] != 3) {
+            opponentGuess(lastPiece.x - 1, lastPiece.y - 1);
+
+        } else {
+            checkLast();
+        }
+    }
+    if (roll == 4) {
+        if (player.pieces[lastPiece.x - 1][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y + 1][0] != 3) {
+            opponentGuess(lastPiece.x - 1, lastPiece.y + 1);
+        } else {
+            checkLast();
+        }
+    }
+    if (roll == 5) {
         if (player.pieces[lastPiece.x + 1][lastPiece.y][1] == 0 && player.pieces[lastpiece.x + 1, lastPiece.y][0] != 3) {
             opponentGuess(lastPiece.x + 1, lastPiece.y);
-        } //IF .y + 1
-        else if (typeof player.pieces[lastPiece.x + 1][lastPiece.y + 1] != 'undefined') {
-            if (player.pieces[lastPiece.x + 1][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x + 1][lastPiece.y + 1][0] != 3) {
-                opponentGuess(lastPiece.x + 1, lastPiece.y + 1);
-            } //IF .y - 1
-        } else if (typeof player.pieces[lastPiece.x + 1][lastPiece.y - 1] != 'undefined') {
-            if (player.pieces[lastPiece.x + 1][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x + 1][lastPiece.y - 1][0] != 3) {
-                opponentGuess(lastPiece.x + 1, lastPiece.y - 1);
-            }
+        } else {
+            checkLast();
         }
-    } else {
-        lastPiece = undefined;
-        opponentGuess();
+    }
+    if (roll == 6) {
+        if (player.pieces[lastPiece.x + 1][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x + 1][lastPiece.y + 1][0] != 3) {
+            opponentGuess(lastPiece.x + 1, lastPiece.y + 1);
+        } else {
+            checkLast();
+        }
+    }
+    if (roll == 7) {
+        if (player.pieces[lastPiece.x + 1][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x + 1][lastPiece.y - 1][0] != 3) {
+            opponentGuess(lastPiece.x + 1, lastPiece.y - 1);
+        } else {
+            checkLast()
+        }
+    
     }
 }
 
 
+
+
 function opponentGuess(x, y) {
 
-
-    if (typeof lastPiece == 'undefined') {
+    if (lastPiece != 0 || typeof lastPiece != 'undefined') {
         let randX = x || Math.floor(Math.random() * 10);
         let randY = y || Math.floor(Math.random() * 10);
         let pcs = player.pieces;
@@ -80,11 +94,6 @@ function opponentGuess(x, y) {
             playerTurn = true;
         } else if (pcs[randX][randY][0] == 1) {
 
-            lastPiece = {
-                x: randX,
-                y: randY
-            }
-
             setPiece({
                 name: player,
                 val: 3,
@@ -93,14 +102,19 @@ function opponentGuess(x, y) {
                 z: 0
             });
 
+            lastPiece = {
+                x: randX,
+                y: randY
+            }
             checkMove(player, randX, randY);
             opponentScore++;
             console.log('opponent hit! going in again..');
             opponentGuess();
 
-        } else {
-            checkLast();
         }
+
+    } else {
+        checkLast();
     }
 }
 

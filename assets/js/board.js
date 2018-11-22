@@ -62,7 +62,7 @@ function resetPlayer() {
 }
 
 
-                function setPiece(value) {
+function setPiece(value) {
     value.name.pieces[value.x][value.y][value.z] = value.val;
 }
 
