@@ -28,7 +28,7 @@ function mousePressed() {
             console.log('Hit!');
         } else if (pieces[x][y][0] == 3 || pieces[x][y][1] == 1) {
             console.log('Already hit that, try again!');
-        }else {
+        } else {
             console.log('Miss');
             setPiece({
                 name: dummyBoard,
@@ -48,13 +48,13 @@ function mousePressed() {
         }
 
 
-    }else if(started == false && mx > button.x && mx < button.x + button.width && my > button.y && my < button.y + button.height){
+    } else if (started == false && mx > button.x && mx < button.x + button.width && my > button.y && my < button.y + button.height) {
         randomizePieces(player);
-    }else if(started == false && mx > startButton.x && mx < startButton.x + startButton.width 
-        && my > startButton.y && my < startButton.y + startButton.height){
+    } else if (started == false && mx > startButton.x && mx < startButton.x + startButton.width &&
+        my > startButton.y && my < startButton.y + startButton.height) {
         started = true;
-    }else if(started == false && mx > rColorBtn.x && mx < rColorBtn.x + rColorBtn.width && my > rColorBtn.y 
-        && my < rColorBtn.y + rColorBtn.height){
+    } else if (started == false && mx > rColorBtn.x && mx < rColorBtn.x + rColorBtn.width && my > rColorBtn.y &&
+        my < rColorBtn.y + rColorBtn.height) {
         randomizeColor(player);
     }
 }
