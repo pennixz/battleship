@@ -1,62 +1,68 @@
 function checkLast() {
     let roll = Math.round(Math.random() * 7);
-    if (roll == 0) {
-        if (player.pieces[lastPiece.x][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x][lastPiece.y - 1][0] != 3) {
-            opponentGuess(lastPiece.x, lastPiece.y - 1);
-        } else {
-            checkLast();
-        }
-    }
-    if (roll == 1) {
-        if (player.pieces[lastPiece.x][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x][lastPiece.y + 1][0] != 3) {
-            opponentGuess(lastPiece.x, lastPiece.y + 1);
-        } else {
-            checkLast();
-        }
-    }
-    if (roll == 2) {
-        if (player.pieces[lastPiece.x - 1][lastPiece.y][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y][0] != 3) {
-            opponentGuess(lastPiece.x - 1, lastPiece.y);
-        } else {
-            checkLast();
-        }
-    }
-    if (roll == 3) {
-        if (player.pieces[lastPiece.x - 1][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y - 1][0] != 3) {
-            opponentGuess(lastPiece.x - 1, lastPiece.y - 1);
+    switch (roll) {
+        case 0:
+            if (player.pieces[lastPiece.x][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x][lastPiece.y - 1][0] != 3) {
+                opponentGuess(lastPiece.x, lastPiece.y - 1);
+            } else {
+                checkLast();
+            }
+            break
+        case 1:
 
-        } else {
-            checkLast();
-        }
-    }
-    if (roll == 4) {
-        if (player.pieces[lastPiece.x - 1][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y + 1][0] != 3) {
-            opponentGuess(lastPiece.x - 1, lastPiece.y + 1);
-        } else {
-            checkLast();
-        }
-    }
-    if (roll == 5) {
-        if (player.pieces[lastPiece.x + 1][lastPiece.y][1] == 0 && player.pieces[lastpiece.x + 1, lastPiece.y][0] != 3) {
-            opponentGuess(lastPiece.x + 1, lastPiece.y);
-        } else {
-            checkLast();
-        }
-    }
-    if (roll == 6) {
-        if (player.pieces[lastPiece.x + 1][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x + 1][lastPiece.y + 1][0] != 3) {
-            opponentGuess(lastPiece.x + 1, lastPiece.y + 1);
-        } else {
-            checkLast();
-        }
-    }
-    if (roll == 7) {
-        if (player.pieces[lastPiece.x + 1][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x + 1][lastPiece.y - 1][0] != 3) {
-            opponentGuess(lastPiece.x + 1, lastPiece.y - 1);
-        } else {
-            checkLast()
-        }
-    
+            if (player.pieces[lastPiece.x][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x][lastPiece.y + 1][0] != 3) {
+                opponentGuess(lastPiece.x, lastPiece.y + 1);
+            } else {
+                checkLast();
+            }
+            break
+
+        case 2:
+            if (player.pieces[lastPiece.x - 1][lastPiece.y][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y][0] != 3) {
+                opponentGuess(lastPiece.x - 1, lastPiece.y);
+            } else {
+                checkLast();
+            }
+            break
+        case 3:
+            if (player.pieces[lastPiece.x - 1][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y - 1][0] != 3) {
+                opponentGuess(lastPiece.x - 1, lastPiece.y - 1);
+
+            } else {
+                checkLast();
+            }
+            break
+        case 4:
+
+            if (player.pieces[lastPiece.x - 1][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x - 1][lastPiece.y + 1][0] != 3) {
+                opponentGuess(lastPiece.x - 1, lastPiece.y + 1);
+            } else {
+                checkLast();
+            }
+            break
+        case 5:
+            if (player.pieces[lastPiece.x + 1][lastPiece.y][1] == 0 && player.pieces[lastpiece.x + 1, lastPiece.y][0] != 3) {
+                opponentGuess(lastPiece.x + 1, lastPiece.y);
+
+            } else {
+                checkLast();
+            }
+            break
+
+        case 6:
+            if (player.pieces[lastPiece.x + 1][lastPiece.y + 1][1] == 0 && player.pieces[lastPiece.x + 1][lastPiece.y + 1][0] != 3) {
+                opponentGuess(lastPiece.x + 1, lastPiece.y + 1);
+            } else {
+                checkLast();
+            }
+            break
+        case 7:
+            if (player.pieces[lastPiece.x + 1][lastPiece.y - 1][1] == 0 && player.pieces[lastPiece.x + 1][lastPiece.y - 1][0] != 3) {
+                opponentGuess(lastPiece.x + 1, lastPiece.y - 1);
+            } else {
+                checkLast()
+            }
+            break
     }
 }
 
@@ -119,33 +125,11 @@ function opponentGuess(x, y) {
 }
 
 function resetOpponent() {
-    opponent.pieces = [
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
-    ];
+    opponent.pieces = newBlankBoard()  
     randomizePieces(opponent);
     resetDummy();
 }
 
 function resetDummy() {
-    dummyBoard.pieces = [
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
-        [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
-    ];
+    dummyBoard.pieces = newBlankBoard() 
 }
